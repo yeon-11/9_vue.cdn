@@ -2,13 +2,31 @@
 <html lang="en">
 
 <head>
-    <title>My first Vue page</title>
+    <title>click to run Method</title>
 </head>
 
 <body>
+    <style>
+        #app {
+            border: dashed 1px;
+            width: 100%;
+            padding: 0 20px 20px 20px;
+        }
+
+        #app>div {
+            width: 80%;
+            height: 60px;
+            background-color: ligthgreen;
+            padding: 20px;
+            font-weight: bold;
+        }
+    </style>
 
     <div id="app">
-        {{ message }}
+        <p>아래에 박스를 마우스로 클릭해보세요</p>
+        <div v-on:click="changeText">
+            {{ text }}
+        </div>
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -17,9 +35,14 @@
         const app = Vue.createApp({
             data() {
                 return {
-                    message: "Hello World!"
+                    text: ''
                 }
-            }
+            },
+            methods: {
+                changeText() {
+                    this.text = 'penguin'
+                }
+            },
         })
 
         app.mount('#app')
